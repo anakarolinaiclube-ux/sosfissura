@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Dia 4: Desintoxicação - Método Respira</title>
+    <title>SOS - Fissura - Método Respira</title>
     
     <!-- Fonte Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -223,13 +223,13 @@
 
     <div class="player-container">
         <div class="app-card">
-            <div class="protocol-tag">Jornada Principal</div>
-            <h1>Dia 4: Desintoxicação</h1>
-            <p>Acelerando a eliminação de toxinas emocionais e fortalecendo o seu orgulho pessoal.</p>
+            <div class="protocol-tag">Recursos Extras</div>
+            <h1>SOS - Fissura</h1>
+            <p>Técnica de intervenção rápida para momentos de estresse inesperado. Ouça sempre que precisar.</p>
             
             <div class="meta-info">
-                <span><i class="far fa-clock"></i> 20 Minutos</span>
-                <span><i class="fas fa-wave-square"></i> Ondas Theta</span>
+                <span><i class="far fa-clock"></i> 5 Minutos</span>
+                <span><i class="fas fa-wave-square"></i> Intervenção</span>
             </div>
 
             <!-- Formulário de Entrada -->
@@ -280,7 +280,7 @@
         // Instanciando os áudios
         const introAudio = new Audio();
         // Áudio fixo do protocolo (URL Placeholder)
-        const mainAudio = new Audio('https://raw.githubusercontent.com/anakarolinaiclube-ux/metodor4/main/audio/respira.mp3'); 
+        const mainAudio = new Audio('https://raw.githubusercontent.com/anakarolinaiclube-ux/sosfissura/main/audio/respira.mp3'); 
 
         // 1. Usuário digita o nome e a API é chamada
         startBtn.addEventListener('click', async () => {
@@ -362,7 +362,7 @@
         // Toca o áudio principal da terapia
         function playMainAudio() {
             statusText.innerText = "Sessão em Andamento";
-            subStatus.innerText = "Dia 4: Desintoxicação";
+            subStatus.innerText = "SOS - Fissura";
             mainAudio.currentTime = 0; 
             mainAudio.play().catch(e => console.error("Erro ao tocar áudio principal:", e));
         }
