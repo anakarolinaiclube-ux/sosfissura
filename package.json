@@ -1,0 +1,11 @@
+{
+  "name": "respira-protocolo-ai",
+  "version": "1.0.0",
+  "description": "Micro-SaaS Método Respira com TTS",
+  "scripts": {
+    "start": "echo 'Run via Vercel CLI'"
+  },
+  "engines": {
+    "node": ">=18.x"
+  }
+}

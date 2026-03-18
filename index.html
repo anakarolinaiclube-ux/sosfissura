@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dia 4: Desintoxicação - Método Respira</title>
+    
+    <!-- Fonte Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Ícones -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-body: #F5F4F0;       
+            --bg-card: #FFFFFF;       
+            --bg-dark: #111111;       
+            --bg-alt: #EBE7DF;        
+            
+            --text-main: #111111;     
+            --text-light: #5A5A58;    
+            --text-inverse: #FFFFFF;  
+            
+            --accent-black: #000000;
+            --accent-gold: #C29B62;   
+            --border-color: #DCD7CD;
+            
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --shadow-soft: 0 10px 25px -5px rgba(0,0,0,0.05);
+            --shadow-hard: 0 20px 40px rgba(0,0,0,0.15);
+            
+            --font-main: 'Poppins', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-main);
+            color: var(--text-main);
+            background-color: var(--bg-body);
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* HEADER SIMPLES */
+        header {
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            color: var(--bg-dark);
+            text-decoration: none;
+        }
+        .logo span { font-weight: 300; color: var(--accent-gold); }
+        .back-btn { color: var(--text-light); text-decoration: none; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+        .back-btn:hover { color: var(--bg-dark); }
+
+        /* PLAYER CONTAINER */
+        .player-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* APP CARD */
+        .app-card {
+            background-color: var(--bg-dark);
+            width: 100%;
+            border-radius: var(--radius-lg);
+            padding: 40px 30px;
+            box-shadow: var(--shadow-hard);
+            color: var(--text-inverse);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .protocol-tag {
+            background-color: rgba(194, 155, 98, 0.15);
+            color: var(--accent-gold);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .app-card h1 { font-size: 1.8rem; margin-bottom: 10px; line-height: 1.2; }
+        .app-card p { font-size: 0.95rem; color: #A0A0A0; margin-bottom: 30px; }
+
+        .meta-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 0.85rem;
+            color: var(--accent-gold);
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        /* INPUT AREA */
+        .input-group {
+            margin-bottom: 30px;
+            text-align: left;
+            transition: opacity 0.5s ease;
+        }
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: #A0A0A0;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .input-group input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #FFF;
+            padding: 15px 20px;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-main);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .input-group input:focus { border-color: var(--accent-gold); }
+
+        /* PLAY BUTTON */
+        .btn-play {
+            background-color: var(--accent-gold);
+            color: var(--bg-dark);
+            border: none;
+            width: 100%;
+            padding: 16px;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-main);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-play:hover { background-color: #d1b182; transform: translateY(-2px); }
+        .btn-play:disabled { background-color: #555; color: #888; cursor: not-allowed; transform: none; }
+
+        /* PLAYING STATE UI */
+        .playing-ui {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .pulsing-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(194, 155, 98, 0.2);
+            display: flex; /* Alternado no JS */
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 30px;
+            animation: pulse 3s infinite ease-in-out;
+        }
+        .pulsing-circle i { font-size: 2.5rem; color: var(--accent-gold); }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(194, 155, 98, 0.4); }
+            70% { box-shadow: 0 0 0 30px rgba(194, 155, 98, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(194, 155, 98, 0); }
+        }
+
+        .status-text { font-size: 1rem; color: var(--accent-gold); font-weight: 600; margin-bottom: 10px; }
+        .sub-status { font-size: 0.85rem; color: #A0A0A0; margin-bottom: 25px; }
+        
+        /* SPINNER */
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(17,17,17,0.3);
+            border-top-color: var(--bg-dark);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- LINK EXTERNO "VOLTAR" EDITÁVEL AQUI -->
+        <a href="https://acessomr.vercel.app/" class="back-btn"><i class="fas fa-arrow-left"></i> Voltar</a>
+        <a href="/" class="logo">RESPIRA<span>.</span></a>
+    </header>
+
+    <div class="player-container">
+        <div class="app-card">
+            <div class="protocol-tag">Jornada Principal</div>
+            <h1>Dia 4: Desintoxicação</h1>
+            <p>Acelerando a eliminação de toxinas emocionais e fortalecendo o seu orgulho pessoal.</p>
+            
+            <div class="meta-info">
+                <span><i class="far fa-clock"></i> 20 Minutos</span>
+                <span><i class="fas fa-wave-square"></i> Ondas Theta</span>
+            </div>
+
+            <!-- Formulário de Entrada -->
+            <div id="setup-ui">
+                <div class="input-group">
+                    <label for="userName">Como você gostaria de ser chamado?</label>
+                    <input type="text" id="userName" placeholder="Seu primeiro nome" autocomplete="off">
+                </div>
+                
+                <button id="startBtn" class="btn-play">
+                    <span>Iniciar Sessão</span>
+                    <div class="spinner" id="spinner"></div>
+                </button>
+            </div>
+
+            <!-- Interface de Preparação e Tocando -->
+            <div id="playing-ui" class="playing-ui">
+                <div class="status-text" id="status-text">Conectando...</div>
+                <div class="sub-status" id="sub-status">Aguarde...</div>
+                
+                <!-- Animação do círculo (escondida inicialmente) -->
+                <div class="pulsing-circle" id="pulsing-circle" style="display: none;">
+                    <i class="fas fa-headphones-alt"></i>
+                </div>
+
+                <!-- Botão explícito para desbloquear o áudio no mobile -->
+                <button id="actualPlayBtn" class="btn-play" style="display: none;">
+                    <i class="fas fa-play"></i> Começar a Ouvir
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const startBtn = document.getElementById('startBtn');
+        const userNameInput = document.getElementById('userName');
+        const setupUi = document.getElementById('setup-ui');
+        const playingUi = document.getElementById('playing-ui');
+        const spinner = document.getElementById('spinner');
+        const btnText = startBtn.querySelector('span');
+        
+        // Elementos da nova interface de Play
+        const statusText = document.getElementById('status-text');
+        const subStatus = document.getElementById('sub-status');
+        const pulsingCircle = document.getElementById('pulsing-circle');
+        const actualPlayBtn = document.getElementById('actualPlayBtn');
+
+        // Instanciando os áudios
+        const introAudio = new Audio();
+        // Áudio fixo do protocolo (URL Placeholder)
+        const mainAudio = new Audio('https://raw.githubusercontent.com/anakarolinaiclube-ux/metodor4/main/audio/respira.mp3'); 
+
+        // 1. Usuário digita o nome e a API é chamada
+        startBtn.addEventListener('click', async () => {
+            const name = userNameInput.value.trim();
+            if (!name) {
+                alert('Por favor, digite seu nome para personalizar a sessão.');
+                userNameInput.focus();
+                return;
+            }
+
+            // UI Loading State
+            startBtn.disabled = true;
+            btnText.style.display = 'none';
+            spinner.style.display = 'block';
+
+            try {
+                // Chama a API Serverless
+                const response = await fetch(`/api/ai?name=${encodeURIComponent(name)}`);
+                const data = await response.json();
+
+                // Transição de UI para "Pronto para tocar"
+                setupUi.style.display = 'none';
+                playingUi.style.display = 'flex';
+
+                if (data.audioUrl) {
+                    introAudio.src = data.audioUrl;
+                }
+
+                // Libera o botão de Play explícito para o usuário (Desbloqueia o mobile)
+                statusText.innerText = "Sessão Pronta";
+                subStatus.innerText = "Clique no botão abaixo para iniciar.";
+                actualPlayBtn.style.display = 'flex';
+
+            } catch (error) {
+                console.error('Erro na API:', error);
+                
+                // Fallback de segurança: Exibe botão de Play mesmo se a API falhar
+                setupUi.style.display = 'none';
+                playingUi.style.display = 'flex';
+                statusText.innerText = "Sessão Pronta";
+                subStatus.innerText = "Clique no botão abaixo para iniciar.";
+                actualPlayBtn.style.display = 'flex';
+            }
+        });
+
+        // 2. O usuário clica em "Começar a Ouvir"
+        // Este é o pulo do gato: Por ser uma ação real de clique, o Safari/Chrome
+        // permite que os áudios toquem a partir daqui sem restrições.
+        actualPlayBtn.addEventListener('click', () => {
+            // Toca e pausa instantaneamente o áudio secundário para desbloqueá-lo no celular
+            mainAudio.play().then(() => {
+                mainAudio.pause();
+                mainAudio.currentTime = 0;
+            }).catch(() => {});
+
+            // Ajusta a Interface
+            actualPlayBtn.style.display = 'none';
+            pulsingCircle.style.display = 'flex';
+
+            // Verifica se a intro foi carregada com sucesso
+            if (introAudio.src && introAudio.src !== window.location.href) {
+                statusText.innerText = "Preparando sua mente...";
+                subStatus.innerText = "Ouça a introdução";
+                introAudio.play().catch(e => {
+                    console.error("Erro ao tocar intro:", e);
+                    playMainAudio(); // Se der erro, pula para o áudio principal
+                });
+            } else {
+                // Se não houver intro, vai direto pro principal
+                playMainAudio();
+            }
+        });
+
+        // Evento: Quando a introdução acabar, começa o protocolo
+        introAudio.addEventListener('ended', () => {
+            playMainAudio();
+        });
+
+        // Toca o áudio principal da terapia
+        function playMainAudio() {
+            statusText.innerText = "Sessão em Andamento";
+            subStatus.innerText = "Dia 4: Desintoxicação";
+            mainAudio.currentTime = 0; 
+            mainAudio.play().catch(e => console.error("Erro ao tocar áudio principal:", e));
+        }
+    </script>
+</body>
+</html>
